@@ -1,0 +1,99 @@
+# Ignore Eclipse project files
+.classpath
+.project
+.settings/
+
+# Ignore Maven target directory (compiled code and dependencies)
+target/
+
+# Ignore Maven build logs and reports
+mvnw
+mvnw.cmd
+*.log
+
+# Ignore IntelliJ IDEA project files (if applicable)
+.idea/
+*.iml
+
+# Ignore TestNG reports and outputs
+test-output/
+testng.xml
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore compiled Java files
+*.class
+
+# Ignore dependency libraries downloaded by Maven
+.m2/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore JetBrains and VS Code workspace files (if using)
+.vscode/
+*.code-workspace
+
+# Ignore JUnit & Cucumber reports
+cucumber-reports/
+surefire-reports/
+extent-reports/
+
+# Ignore environment-specific files
+.env
+
+# Ignore build and dependency files
+/target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Ignore IDE-specific files
+.idea/
+*.iml
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Ignore Maven-specific files
+.mvn/
+mvnw
+mvnw.cmd
+
+# Ignore log and output files
+*.log
+/logs/
+*.out
+*.err
+
+# Ignore test reports and screenshots
+/test-output/
+screenshots/
+allure-results/
+reports/
+ExtentReport/
+*.html
+
+# Ignore generated Selenium WebDriver files
+chromedriver.log
+geckodriver.log
+selenium-server.log
+
+# Ignore compiled and temporary files
+/bin/
+*.swp
+*.DS_Store
+Thumbs.db
+
+# Ignore Node modules (if using any JS tools)
+node_modules/
+
+# Ignore dependency caching
+/.m2/
