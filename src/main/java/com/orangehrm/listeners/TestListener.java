@@ -24,7 +24,7 @@ public class TestListener implements ITestListener {
 		endTest();
 	}
 
-	// Trigger When Test Starts
+	// Trigger When Test Starts / Before each methods
 	@Override
 	public void onTestStart(ITestResult result) {
 

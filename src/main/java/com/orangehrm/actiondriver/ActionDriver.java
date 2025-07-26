@@ -128,7 +128,7 @@ public class ActionDriver {
 				return true;
 			}
 		} catch (Exception e) {
-			
+
 			logger.error(" Unable to compare texts: -->" + e.getMessage());
 			ExtentManager.logFailure(BaseClass.getDriver(), " Unable to compare texts: -->" + e.getMessage(),
 					"Unable to compare texts");
@@ -154,8 +154,7 @@ public class ActionDriver {
 
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(by));
-			ExtentManager.logStepWithScreenshot(driver, getElementDescription(by) + " is Visible",
-					"Visible Element");
+			ExtentManager.logStepWithScreenshot(driver, getElementDescription(by) + " is Visible", "Visible Element");
 		} catch (Exception e) {
 			logger.error(" Element is not Visible: -->" + e.getMessage());
 			ExtentManager.logFailure(BaseClass.getDriver(), "Not Visible: -->" + e.getMessage(),
@@ -229,18 +228,26 @@ public class ActionDriver {
 		}
 		return value.substring(0, maxLength);
 	}
-	
-	
+
 	public void borderElement(By by, String color) {
-		
+
 		try {
 			WebElement element = driver.findElement(by);
 			JavascriptExecutor js = (JavascriptExecutor) driver;
-			js.executeScript("arguments[0].style.border='6px solid "+color+"'", element);
-			logger.info("Applied the border with color "+color+" to element "+getElementDescription(by));
+			js.executeScript("arguments[0].style.border='6px solid " + color + "'", element);
+			logger.info("Applied the border with color " + color + " to element " + getElementDescription(by));
 		} catch (Exception e) {
-			logger.warn("Failed to apply border to an element: "+getElementDescription(by), e);
+			logger.warn("Failed to apply border to an element: " + getElementDescription(by), e);
 		}
+	}
+	
+	/*  //a[@id= '{0}']//input[@class = '{1}']  */
+	public String getDynamicXpath(String xpath, Object... args) {
+		String dynamicXpath = xpath;
+		for (int i = 0; i < args.length; i++) {
+			dynamicXpath = dynamicXpath.replace("{" + i + "}", args[i].toString());
+		}
+		return dynamicXpath;
 	}
 
 }

@@ -1,0 +1,27 @@
+package com.orangehrm.test;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.LockSupport;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestPraticeClass {
+
+	public static void main(String[] args) {
+
+
+		WebDriver driver = new ChromeDriver();
+		
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		LockSupport.parkNanos(TimeUnit.SECONDS.toNanos(3));
+		
+		driver.quit();
+		 
+
+	}
+
+}

@@ -87,6 +87,10 @@ public class BaseClass {
 			ExtentManager.registerDriver(getDriver());
 			
 		}
+		else {
+			logger.info("Invalid Browser Name --> " + browserName);
+			throw new IllegalArgumentException("Invalid Browser Name --> " + browserName);
+		}
 
 		// Sample logger message
 		logger.info("WebDriver Initialized and Browser Maximized");

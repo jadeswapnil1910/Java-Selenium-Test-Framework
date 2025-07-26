@@ -137,7 +137,7 @@ public class ExtentManager {
 		}
 	}
 
-	// Take Screenshot with Date and Time Time stamp
+	// Take Screenshot with Date and TimeStamp and Copy to Destination Folder
 	public synchronized static String takeScreenShot(WebDriver driver, String screenshotName) {
 
 		TakesScreenshot ts = (TakesScreenshot) driver;
