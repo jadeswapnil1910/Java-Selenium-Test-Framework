@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-model href=""?>
+<!--<suite name="OrangeHRM Suite" parallel="tests" thread-count="10"> will open single browser and run test cases sequencially in a Single Thread-->
+<suite name="OrangeHRMSuite" parallel="tests" thread-count="7">
+
+	<listeners>
+		<listener class-name="com.orangehrm.listeners.TestListener" />
+	</listeners>
+
+
+	<test name="OrangeHRM Home Page Test">
+
+		<classes>
+
+			<!--	<class name="com.orangehrm.test.DummyClass" />-->
+			<!--	<class name="com.orangehrm.test.LoginPageTest" />-->
+			<!--<class name="com.orangehrm.test.HomePageTest" />-->
+			<!--<class name="com.orangehrm.test.TestThreads" />-->
+
+		</classes>
+
+	</test>
+	
+	<test name="OrangeHRM Login Test">
+
+		<classes>
+
+			<!--	<class name="com.orangehrm.test.DummyClass" />-->
+			<class name="com.orangehrm.test.LoginPageTest" />
+			<!--<class name="com.orangehrm.test.HomePageTest" />-->
+			<!--<class name="com.orangehrm.test.TestThreads" />-->
+
+		</classes>
+
+	</test>
+
+</suite>

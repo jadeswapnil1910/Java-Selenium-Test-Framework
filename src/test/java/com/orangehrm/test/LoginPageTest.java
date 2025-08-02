@@ -70,7 +70,7 @@ public class LoginPageTest extends BaseClass {
 //		ExtentManager.startTest("invalidLoginTestErrorMessage");	-- This has been implemented in TestListener class
 		
 		loginPage.login("Admin", "admin1234");
-		String ExpectedErrorMsg = "Invalid credentials1";
+		String ExpectedErrorMsg = "Invalid credentials123";
 		staticWait(3);
 		Assert.assertTrue(loginPage.verifyErrorMessage(ExpectedErrorMsg), "[FAIL] : Invalid Error Message.");
 	}

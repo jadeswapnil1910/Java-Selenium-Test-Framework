@@ -1,0 +1,16 @@
+# Application URL=
+url = https://opensource-demo.orangehrmlive.com/
+# Browser Configuration=
+BROWSER = chrome
+# Application Credentials=
+username = Admin
+password = admin123
+invalidUsername = Admin
+invalidPassword = Admin12345
+# Global ImplicitWait (in seconds)=
+implicitWait = 10
+# Global ExplicittWait (in seconds)=
+explicitWait = 30
+# Parallel Execution=
+PARALLEL_EXECUTION = false
+MAX_PARALLEL_THREADS = 1

@@ -102,6 +102,12 @@ public class ExtentManager {
 		getTest().pass(logMessage);
 
 		// ScreenShot method
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		attachScreentshot(driver, screenShotMessage);
 	}
 
@@ -113,6 +119,12 @@ public class ExtentManager {
 		getTest().fail(failRedColorMessage);
 
 		// Fail ScreenShot method
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		attachScreentshot(driver, screenShotMessage);
 	}
 

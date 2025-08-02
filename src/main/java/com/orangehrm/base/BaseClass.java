@@ -66,7 +66,7 @@ public class BaseClass {
 	/* Initialized a WebDriver based on browser define in config.properties file. */
 	public synchronized void initBrowser() {
 
-		String browserName = prop.getProperty("browser");
+		String browserName = prop.getProperty("BROWSER");
 
 		if (browserName.trim().equalsIgnoreCase("chrome")) {
 //			driver = new ChromeDriver();
