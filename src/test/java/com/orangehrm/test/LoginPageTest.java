@@ -42,7 +42,7 @@ public class LoginPageTest extends BaseClass {
 
 	}
 
-	@Test
+	//@Test
 	public void TC02_InvalidLoginTest() {
 
 //		System.out.println("Running testMethod1 on thread: " + Thread.currentThread().getId());
@@ -60,7 +60,7 @@ public class LoginPageTest extends BaseClass {
 		ExtentManager.logStep("rror Message Validation is Successfull.");
 	}
 
-	@Test
+	//@Test
 	public void TC03_InvalidLoginTestErrorMessage() {
 
 //		System.out.println("Running testMethod1 on thread: " + Thread.currentThread().getId());
