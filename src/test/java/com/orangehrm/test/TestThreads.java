@@ -11,14 +11,14 @@ public class TestThreads extends BaseClass {
 	@Test
 	void test_01() {
 		
-		logger.info(Thread.currentThread().getId() + " --> " + Thread.currentThread().getName());
+		logger.info(Thread.currentThread().threadId() + " --> " + Thread.currentThread().getName());
 		
 	}
 	
 	@Test
 	void test_02() {
 		
-		logger.info(Thread.currentThread().getId() + " --> " + Thread.currentThread().getName());
+		logger.info(Thread.currentThread().threadId() + " --> " + Thread.currentThread().getName());
 	}
 
 }

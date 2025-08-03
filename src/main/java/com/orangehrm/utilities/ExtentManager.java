@@ -35,7 +35,7 @@ public class ExtentManager {
 	// Register WebDriver for Current Thread
 	public static void registerDriver(WebDriver driver) {
 
-		driverMap.put(Thread.currentThread().getId(), driver);
+		driverMap.put(Thread.currentThread().threadId(), driver);
 	}
 
 	// Initialized extent report
@@ -105,7 +105,6 @@ public class ExtentManager {
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		attachScreentshot(driver, screenShotMessage);
@@ -122,7 +121,6 @@ public class ExtentManager {
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		attachScreentshot(driver, screenShotMessage);
