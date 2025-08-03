@@ -7,16 +7,22 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 // import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 // import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 // import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
+
 //import org.testng.asserts.SoftAssert;
 //import com.aventstack.extentreports.reporter.ExtentReporter;
 import com.orangehrm.actiondriver.ActionDriver;
@@ -52,10 +58,12 @@ public class BaseClass {
 	}
 
 	@BeforeMethod
-	public synchronized void setup() {
+	@Parameters({"browser"})
+	public synchronized void setup(String browser) {
 
 		logger.info("Setting up Webdriver for: " + this.getClass().getSimpleName());
-		initBrowser();
+//		String browserName = prop.getProperty("BROWSER");
+		initBrowser(browser);
 		configureBrowser();
 		staticWait(2);
 		initActionDriver();
@@ -63,27 +71,68 @@ public class BaseClass {
 	}
 
 	/* Initialized a WebDriver based on browser define in config.properties file. */
-	public synchronized void initBrowser() {
+	public synchronized void initBrowser(String browserName) {
 
-		String browserName = prop.getProperty("BROWSER");
+		
 
 		if (browserName.trim().equalsIgnoreCase("chrome")) {
 //			driver = new ChromeDriver();
-			driver.set(new ChromeDriver());
-			logger.info("ChromeDriver Instance is created.");
+//			driver.set(new ChromeDriver());
+//			logger.info("ChromeDriver Instance is created.");
+//			ExtentManager.registerDriver(getDriver());
+			
+			// Create ChromeOptions
+			ChromeOptions options = new ChromeOptions();
+			options.setBrowserVersion("beta");
+			options.addArguments("--headless"); // Run Chrome in headless mode
+			options.addArguments("--disable-gpu"); // Disable GPU for headless mode
+			options.addArguments("--disable-notifications"); // Disable browser notifications
+			options.addArguments("--no-sandbox"); // Required for some CI environments like Jenkins
+			options.addArguments("--disable-dev-shm-usage"); // Resolve issues in resource-limited environments
+
+			// driver = new ChromeDriver();
+			driver.set(new ChromeDriver(options)); // New Changes as per Thread
 			ExtentManager.registerDriver(getDriver());
+			logger.info("ChromeDriver Instance is created.");
 			
 		} else if (browserName.trim().equalsIgnoreCase("edge")) {
 //			driver = new EdgeDriver();
-			driver.set(new EdgeDriver());
-			logger.info("EdgeDriver Instance is created.");
+//			driver.set(new EdgeDriver());
+//			logger.info("EdgeDriver Instance is created.");
+//			ExtentManager.registerDriver(getDriver());
+			
+			EdgeOptions options = new EdgeOptions();
+			options.addArguments("--headless"); // Run Edge in headless mode
+			options.addArguments("--disable-gpu"); // Disable GPU acceleration
+			options.addArguments("--disable-notifications"); // Disable pop-up notifications
+			options.addArguments("--no-sandbox"); // Needed for CI/CD
+			options.addArguments("--disable-dev-shm-usage"); // Prevent resource-limited crashes
+			
+			// driver = new EdgeDriver();
+			driver.set(new EdgeDriver(options)); // New Changes as per Thread
+			
 			ExtentManager.registerDriver(getDriver());
+			logger.info("EdgeDriver Instance is created.");
 			
 		} else if (browserName.trim().equalsIgnoreCase("firefox")) {
 //			driver = new FirefoxDriver();
-			driver.set(new FirefoxDriver());
-			logger.info("FirefoxDriver Instance is created.");
+//			driver.set(new FirefoxDriver());
+//			logger.info("FirefoxDriver Instance is created.");
+//			ExtentManager.registerDriver(getDriver());
+			
+			
+			// Create FirefoxOptions
+			FirefoxOptions options = new FirefoxOptions();
+			options.addArguments("--headless"); // Run Firefox in headless mode
+			options.addArguments("--disable-gpu"); // Disable GPU rendering (useful for headless mode)
+			options.addArguments("--disable-notifications"); // Disable browser notifications
+			options.addArguments("--no-sandbox"); // Needed for CI/CD environments
+			options.addArguments("--disable-dev-shm-usage"); // Prevent crashes in low-resource environments
+
+			// driver = new FirefoxDriver();
+			driver.set(new FirefoxDriver(options)); // New Changes as per Thread
 			ExtentManager.registerDriver(getDriver());
+			logger.info("FirefoxDriver Instance is created.");
 			
 		}
 		else {
@@ -92,7 +141,7 @@ public class BaseClass {
 		}
 
 		// Sample logger message
-		logger.info("WebDriver Initialized and Browser Maximized");
+//		logger.info("WebDriver Initialized and Browser Maximized");
 //		logger.trace("This is a Trace message");
 //		logger.error("This is a error message");
 //		logger.debug("This is a debug message");
@@ -122,7 +171,13 @@ public class BaseClass {
 		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWait));
 
 		// Maximize Browser
-		getDriver().manage().window().maximize();
+//		getDriver().manage().window().maximize();
+		
+		// ✅ Explicitly set window size
+		getDriver().manage().window().setSize(new Dimension(1920, 1080));
+		
+		Dimension size = getDriver().manage().window().getSize();
+		logger.info("Browser size: " + size);
 
 		// Navigate to URL
 		String url = prop.getProperty("url");

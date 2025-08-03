@@ -8,6 +8,7 @@
 		<listener class-name="com.orangehrm.listeners.TestListener" />
 	</listeners>
 
+    <parameter name="browser" value="chrome" />
 
 	<test name="OrangeHRM Home Page Test">
 
