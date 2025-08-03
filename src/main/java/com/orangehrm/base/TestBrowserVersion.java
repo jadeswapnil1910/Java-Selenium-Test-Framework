@@ -12,9 +12,9 @@ public class TestBrowserVersion {
 
 	public static void main(String[] args) throws InterruptedException {
 
-//		chrome();
+		chrome();
 		edge();
-//		geko();
+		geko();
 
 	}
 
