@@ -15,35 +15,35 @@ services:
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
       - SE_NODE_MAX_SESSIONS=2
  
-  firefox:
-    image: selenium/node-firefox:4.34.0
-    shm_size: 2gb
-    deploy:
-      replicas: 1
-    depends_on:
-      - selenium-hub
-    extra_hosts:
-      - "localhost:host-gateway"   # ✅ to map host's localhost inside the container
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - SE_NODE_MAX_SESSIONS=2
- 
-  edge:
-    image: selenium/node-edge:4.34.0
-    shm_size: 2gb
-    deploy:
-      replicas: 1
-    depends_on:
-      - selenium-hub
-    extra_hosts:
-      - "localhost:host-gateway"   # ✅ to map host's localhost inside the container
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - SE_NODE_MAX_SESSIONS=2
+#  firefox:
+#    image: selenium/node-firefox:4.34.0
+#    shm_size: 2gb
+#    deploy:
+#      replicas: 1
+#    depends_on:
+#      - selenium-hub
+#    extra_hosts:
+#      - "localhost:host-gateway"   # ✅ to map host's localhost inside the container
+#    environment:
+#      - SE_EVENT_BUS_HOST=selenium-hub
+#      - SE_EVENT_BUS_PUBLISH_PORT=4442
+#      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+#      - SE_NODE_MAX_SESSIONS=2
+# 
+#  edge:
+#    image: selenium/node-edge:4.34.0
+#    shm_size: 2gb
+#    deploy:
+#      replicas: 1
+#    depends_on:
+#      - selenium-hub
+#    extra_hosts:
+#      - "localhost:host-gateway"   # ✅ to map host's localhost inside the container
+#    environment:
+#      - SE_EVENT_BUS_HOST=selenium-hub
+#      - SE_EVENT_BUS_PUBLISH_PORT=4442
+#      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+#      - SE_NODE_MAX_SESSIONS=2
  
   selenium-hub:
     image: selenium/hub:4.34.0
