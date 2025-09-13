@@ -4,8 +4,28 @@ pipeline {
     tools {
         maven 'MAVEN_HOME' 
     }
+    
+    environment {
+         
+        COMPOSE_PATH = "${WORKSPACE}/docker" 	// 🔁 Adjust if compose file is elsewhere
+        SELENIUM_GRID = "true" 					// Toggle Selenium Grid usage
+    }
+    
+    
 
     stages {
+		
+		stage('Start Selenium Grid via Docker Compose') {
+	            steps {
+	                script {
+	                    echo "Starting Selenium Grid with Docker Compose..."
+	                    bat "docker compose -f ${COMPOSE_PATH}\\docker-compose.yml up -d"
+	                    echo "Waiting for Selenium Grid to be ready..."
+	                    sleep 30 // Add a wait if needed
+	                }
+	            }
+	        }
+		
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/jadeswapnil1910/Java-Selenium-Test-Framework.git'
@@ -23,6 +43,15 @@ pipeline {
                 bat 'mvn test'
             }
         }
+        
+        stage('Stop Selenium Grid') {
+	            steps {
+	                script {
+	                    echo "Stopping Selenium Grid..."
+	                    bat "docker compose -f ${COMPOSE_PATH}\\docker-compose.yml down"
+	                }
+	            }
+	        }
 
         stage('Reports') {
             steps {
