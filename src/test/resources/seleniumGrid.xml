@@ -11,14 +11,14 @@
 			<class name="com.orangehrm.test.HomePageTest" />
 		</classes>
 	</test>
-	<test name="OrangeHRMTest_edge">
+	<!--<test name="OrangeHRMTest_edge">
 		<parameter name="browser" value="edge" />
 		<classes>
-			<!-- <class name="com.orangehrm.test.DummyClass" /> -->
+			 <class name="com.orangehrm.test.DummyClass" /> 
 			<class name="com.orangehrm.test.LoginPageTest" />
 			<class name="com.orangehrm.test.HomePageTest" />
 		</classes>
-	</test>
+	</test>-->
 	<test name="OrangeHRMTest_firefox">
 		<parameter name="browser" value="firefox" />
 		<classes>
