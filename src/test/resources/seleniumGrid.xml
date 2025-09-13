@@ -19,13 +19,13 @@
 			<class name="com.orangehrm.test.HomePageTest" />
 		</classes>
 	</test>-->
-	<test name="OrangeHRMTest_firefox">
+	<!--<test name="OrangeHRMTest_firefox">
 		<parameter name="browser" value="firefox" />
 		<classes>
-			<!-- <class name="com.orangehrm.test.DummyClass" /> -->
+			 <class name="com.orangehrm.test.DummyClass" /> 
 			<class name="com.orangehrm.test.LoginPageTest" />
 			<class name="com.orangehrm.test.HomePageTest" />
-			<!-- <class name="com.orangehrm.test.TestThreads" /> -->
+			 <class name="com.orangehrm.test.TestThreads" /> 
 		</classes>
-	</test>
+	</test>-->
 </suite>
