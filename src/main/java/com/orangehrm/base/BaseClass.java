@@ -84,7 +84,7 @@ public class BaseClass {
 
 					ChromeOptions options = new ChromeOptions();
 					options.setBrowserVersion("stable");
-//					options.addArguments("--headless"); // Run Chrome in headless mode
+					options.addArguments("--headless"); // Run Chrome in headless mode
 					options.addArguments("--disable-gpu"); // Disable GPU for headless mode
 					options.addArguments("--disable-notifications"); // Disable browser notifications
 					options.addArguments("--no-sandbox"); // Required for some CI environments like Jenkins
